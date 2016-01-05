@@ -6,50 +6,12 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # config
-LIBZEN_VERSION="0.4.32"
-LIBMEDIAINFO_VERSION="0.7.80"
-MEDIAINFO_VERSION="0.7.80"
-
-# Buildpack URL
-LIBZEN_ARCHIVE_NAME=libzen0_${LIBZEN_VERSION}-1_amd64.xUbuntu_14.10
-LIBZEN_FILE_NAME=${LIBZEN_ARCHIVE_NAME}.deb
-LIBZEN_PACKAGE=http://mediaarea.net/download/binary/libzen0/${LIBZEN_VERSION}/${LIBZEN_FILE_NAME}
-
-LIBMEDIAINFO_ARCHIVE_NAME=libmediainfo0_${LIBMEDIAINFO_VERSION}-1_amd64.xUbuntu_14.10
-LIBMEDIAINFO_FILE_NAME=${LIBMEDIAINFO_ARCHIVE_NAME}.deb
-LIBMEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/libmediainfo0/${LIBMEDIAINFO_VERSION}/${LIBMEDIAINFO_FILE_NAME}
-
-MEDIAINFO_ARCHIVE_NAME=mediainfo_${MEDIAINFO_VERSION}-1_amd64.xUbuntu_14.10
-MEDIAINFO_FILE_NAME=${MEDIAINFO_ARCHIVE_NAME}.deb
-MEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${MEDIAINFO_VERSION}/${MEDIAINFO_FILE_NAME}
-
-mkdir -p $CACHE_DIR
-#if ! [ -e $CACHE_DIR/$MEDIAINFO_FILE_NAME  ]; then
-    echo "-----> Fetching library libzen0 ${LIBZEN_VERSION} binaries at ${LIBZEN_PACKAGE}"
-    curl $LIBZEN_PACKAGE -L -s -o $CACHE_DIR/$LIBZEN_FILE_NAME
-    echo "-----> Fetching library libmediainfo0 ${LIBMEDIAINFO_VERSION} binaries at ${LIBMEDIAINFO_PACKAGE}"
-    curl $LIBMEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$LIBMEDIAINFO_FILE_NAME
-    echo "-----> Fetching Mediainfo ${MEDIAINFO_VERSION} binaries at ${MEDIAINFO_PACKAGE}"
-    curl $MEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$MEDIAINFO_FILE_NAME
-#fi
-
-echo "-----> Extracting Mediainfo library binaries"
-mkdir -p $CACHE_DIR/$LIBZEN_ARCHIVE_NAME
-mkdir -p $CACHE_DIR/$LIBMEDIAINFO_ARCHIVE_NAME
-mkdir -p $BUILD_DIR/vendor
-dpkg -x $CACHE_DIR/$LIBZEN_FILE_NAME $CACHE_DIR/$LIBZEN_ARCHIVE_NAME
-dpkg -x $CACHE_DIR/$LIBMEDIAINFO_FILE_NAME $CACHE_DIR/$LIBMEDIAINFO_ARCHIVE_NAME
-mv $CACHE_DIR/$LIBZEN_ARCHIVE_NAME $BUILD_DIR/vendor/libzen
-mv $CACHE_DIR/$LIBMEDIAINFO_ARCHIVE_NAME $BUILD_DIR/vendor/libmediainfo
-
-echo "-----> Extracting Mediainfo ${MEDIAINFO_VERSION} binaries to ${BUILD_DIR}/vendor/mediainfo"
-mkdir -p $CACHE_DIR/$MEDIAINFO_ARCHIVE_NAME
-mkdir -p $BUILD_DIR/vendor
-dpkg -x $CACHE_DIR/$MEDIAINFO_FILE_NAME $CACHE_DIR/$MEDIAINFO_ARCHIVE_NAME
-mv $CACHE_DIR/$MEDIAINFO_ARCHIVE_NAME $BUILD_DIR/vendor/mediainfo
+echo "-----> Extract mediainfo"
+echo $(pwd)
+echo $(ls)
 
 echo "-----> Exporting PATH and LIBRARY_PATH"
-PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
-mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:$HOME/vendor/mediainfo/usr/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/vendor/libzen/usr/lib/x86_64-linux-gnu:/app/vendor/libmediainfo/usr/lib/x86_64-linux-gnu"' >> $PROFILE_PATH
+#PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
+#mkdir -p $(dirname $PROFILE_PATH)
+#echo 'export PATH="$PATH:$HOME/vendor/mediainfo/usr/bin"' >> $PROFILE_PATH
+#echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/vendor/libzen/usr/lib/x86_64-linux-gnu:/app/vendor/libmediainfo/usr/lib/x86_64-linux-gnu"' >> $PROFILE_PATH
