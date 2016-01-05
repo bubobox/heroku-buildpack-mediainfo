@@ -9,14 +9,9 @@ ARCHIVE="mediainfo-${MEDIAINFO_VERSION}.tar.gz"
 
 # config
 echo "-----> Extract mediainfo"
-echo "we are:"$(pwd)
 mkdir -p "${BUILD_DIR}/vendor"
-echo "created vendor"
 rm -rf "${BUILD_DIR}/vendor/mediainfo"
-echo "removed mediainfo"
 tar -xf "${ARCHIVE}" -C "${BUILD_DIR}/vendor"
-echo $(ls -la)
-echo "extracted ${ARCHIVE} to ${BUILD_DIR}/vendor"
 
 echo "-----> Exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
