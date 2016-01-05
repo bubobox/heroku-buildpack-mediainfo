@@ -4,14 +4,17 @@ set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+MEDIAINFO_VERSION="0.7.64"
+ARCHIVE="mediainfo-${MEDIAINFO_VERSION}.tar.gz"
 
 # config
 echo "-----> Extract mediainfo"
-echo $(pwd)
-echo $(ls)
+echo "we are:"$(pwd)
+mkdir -p "${BUILD_DIR}/vendor"
+rm -R "${BUILD_DIR}/vendor/mediainfo" 2> /dev/null
+tar -xf "${ARCHIVE}" -C "${BUILD_DIR}/vendor"
 
 echo "-----> Exporting PATH and LIBRARY_PATH"
-#PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
-#mkdir -p $(dirname $PROFILE_PATH)
-#echo 'export PATH="$PATH:$HOME/vendor/mediainfo/usr/bin"' >> $PROFILE_PATH
-#echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/vendor/libzen/usr/lib/x86_64-linux-gnu:/app/vendor/libmediainfo/usr/lib/x86_64-linux-gnu"' >> $PROFILE_PATH
+PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:$HOME/vendor/mediainfo"' >> $PROFILE_PATH
