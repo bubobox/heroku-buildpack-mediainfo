@@ -24,14 +24,14 @@ MEDIAINFO_FILE_NAME=${MEDIAINFO_ARCHIVE_NAME}.deb
 MEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${MEDIAINFO_VERSION}/${MEDIAINFO_FILE_NAME}
 
 mkdir -p $CACHE_DIR
-if ! [ -e $CACHE_DIR/$MEDIAINFO_FILE_NAME  ]; then
+#if ! [ -e $CACHE_DIR/$MEDIAINFO_FILE_NAME  ]; then
     echo "-----> Fetching library libzen0 ${LIBZEN_VERSION} binaries at ${LIBZEN_PACKAGE}"
     curl $LIBZEN_PACKAGE -L -s -o $CACHE_DIR/$LIBZEN_FILE_NAME
     echo "-----> Fetching library libmediainfo0 ${LIBMEDIAINFO_VERSION} binaries at ${LIBMEDIAINFO_PACKAGE}"
     curl $LIBMEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$LIBMEDIAINFO_FILE_NAME
     echo "-----> Fetching Mediainfo ${MEDIAINFO_VERSION} binaries at ${MEDIAINFO_PACKAGE}"
     curl $MEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$MEDIAINFO_FILE_NAME
-fi
+#fi
 
 echo "-----> Extracting Mediainfo library binaries"
 mkdir -p $CACHE_DIR/$LIBZEN_ARCHIVE_NAME
