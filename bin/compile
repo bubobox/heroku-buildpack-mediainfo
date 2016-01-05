@@ -25,8 +25,9 @@ MEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${MEDIAINFO_VER
 
 mkdir -p $CACHE_DIR
 if ! [ -e $CACHE_DIR/$MEDIAINFO_FILE_NAME  ]; then
-    echo "-----> Fetching Mediainfo library binaries"
+    echo "-----> Fetching library libzen0 ${LIBZEN_VERSION} binanries at ${LIBZEN_PACKAGE}"
     curl $LIBZEN_PACKAGE -L -s -o $CACHE_DIR/$LIBZEN_FILE_NAME
+    echo "-----> Fetching library libmediainfo0 ${LIBMEDIAINFO_VERSION} binanries at ${LIBMEDIAINFO_PACKAGE}"
     curl $LIBMEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$LIBMEDIAINFO_FILE_NAME
     echo "-----> Fetching Mediainfo ${MEDIAINFO_VERSION} binaries at ${MEDIAINFO_PACKAGE}"
     curl $MEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$MEDIAINFO_FILE_NAME
