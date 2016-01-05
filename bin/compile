@@ -17,7 +17,7 @@ LIBZEN_PACKAGE=http://mediaarea.net/download/binary/libzen0/${LIBZEN_VERSION}/${
 
 LIBMEDIAINFO_ARCHIVE_NAME=libmediainfo0_${LIBMEDIAINFO_VERSION}-1_amd64.xUbuntu_14.10
 LIBMEDIAINFO_FILE_NAME=${LIBMEDIAINFO_ARCHIVE_NAME}.deb
-LIBMEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${LIBMEDIAINFO_VERSION}/${LIBMEDIAINFO_FILE_NAME}
+LIBMEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/libmediainfo0/${LIBMEDIAINFO_VERSION}/${LIBMEDIAINFO_FILE_NAME}
 
 MEDIAINFO_ARCHIVE_NAME=mediainfo_${MEDIAINFO_VERSION}-1_amd64.xUbuntu_14.10
 MEDIAINFO_FILE_NAME=${MEDIAINFO_ARCHIVE_NAME}.deb
@@ -25,9 +25,9 @@ MEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${MEDIAINFO_VER
 
 mkdir -p $CACHE_DIR
 if ! [ -e $CACHE_DIR/$MEDIAINFO_FILE_NAME  ]; then
-    echo "-----> Fetching library libzen0 ${LIBZEN_VERSION} binanries at ${LIBZEN_PACKAGE}"
+    echo "-----> Fetching library libzen0 ${LIBZEN_VERSION} binaries at ${LIBZEN_PACKAGE}"
     curl $LIBZEN_PACKAGE -L -s -o $CACHE_DIR/$LIBZEN_FILE_NAME
-    echo "-----> Fetching library libmediainfo0 ${LIBMEDIAINFO_VERSION} binanries at ${LIBMEDIAINFO_PACKAGE}"
+    echo "-----> Fetching library libmediainfo0 ${LIBMEDIAINFO_VERSION} binaries at ${LIBMEDIAINFO_PACKAGE}"
     curl $LIBMEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$LIBMEDIAINFO_FILE_NAME
     echo "-----> Fetching Mediainfo ${MEDIAINFO_VERSION} binaries at ${MEDIAINFO_PACKAGE}"
     curl $MEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$MEDIAINFO_FILE_NAME
