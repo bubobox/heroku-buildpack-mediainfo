@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -e
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+# config
+VERSION="0.7.80"
+
+# Buildpack URL
+ARCHIVE_NAME=mediainfo_${VERSION}-1_amd64.xUbuntu_14.10
+FILE_NAME=${ARCHIVE_NAME}.deb
+BUILDPACK_MEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${VERSION}/${FILE_NAME}
+
+mkdir -p $CACHE_DIR
+if ! [ -e $CACHE_DIR/$FILE_NAME  ]; then
+echo "-----> Fetching Mediainfo ${VERSION} binaries at ${BUILDPACK_MEDIAINFO_PACKAGE}"
+curl $BUILDPACK_PHANTOMJS_PACKAGE -L -s -o $CACHE_DIR/$FILE_NAME
+fi
+
+echo "-----> Extracting Mediainfo ${VERSION} binaries to ${BUILD_DIR}/vendor/mediainfo"
+mkdir -p $CACHE_DIR/$ARCHIVE_NAME
+mkdir -p $BUILD_DIR/vendor
+#tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
+dpkg -x $CACHE_DIR/$FILE_NAME $CACHE_DIR/$ARCHIVE_NAME
+mv $CACHE_DIR/$ARCHIVE_NAME $BUILD_DIR/vendor/mediainfo
+
+echo "-----> exporting PATH and LIBRARY_PATH"
+#PROFILE_PATH="$BUILD_DIR/.profile.d/phantomjs.sh"
+#mkdir -p $(dirname $PROFILE_PATH)
+#echo 'export PATH="$PATH:$HOME/vendor/phantomjs/bin"' >> $PROFILE_PATH
+#echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/phantomjs/lib"' >> $PROFILE_PATH
