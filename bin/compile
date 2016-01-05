@@ -12,7 +12,7 @@ echo "-----> Extract mediainfo"
 echo "we are:"$(pwd)
 mkdir -p "${BUILD_DIR}/vendor"
 echo "created vendor"
-rm -R "${BUILD_DIR}/vendor/mediainfo" 2> /dev/null
+rm -rf "${BUILD_DIR}/vendor/mediainfo"
 echo "removed mediainfo"
 tar -xf "${ARCHIVE}" -C "${BUILD_DIR}/vendor"
 echo $(ls -la)
