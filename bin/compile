@@ -16,7 +16,7 @@ BUILDPACK_MEDIAINFO_PACKAGE=http://mediaarea.net/download/binary/mediainfo/${VER
 mkdir -p $CACHE_DIR
 if ! [ -e $CACHE_DIR/$FILE_NAME  ]; then
 echo "-----> Fetching Mediainfo ${VERSION} binaries at ${BUILDPACK_MEDIAINFO_PACKAGE}"
-curl $BUILDPACK_PHANTOMJS_PACKAGE -L -s -o $CACHE_DIR/$FILE_NAME
+curl $BUILDPACK_MEDIAINFO_PACKAGE -L -s -o $CACHE_DIR/$FILE_NAME
 fi
 
 echo "-----> Extracting Mediainfo ${VERSION} binaries to ${BUILD_DIR}/vendor/mediainfo"
