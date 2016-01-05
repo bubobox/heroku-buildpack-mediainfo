@@ -48,7 +48,7 @@ mkdir -p $BUILD_DIR/vendor
 dpkg -x $CACHE_DIR/$MEDIAINFO_FILE_NAME $CACHE_DIR/$MEDIAINFO_ARCHIVE_NAME
 mv $CACHE_DIR/$MEDIAINFO_ARCHIVE_NAME $BUILD_DIR/vendor/mediainfo
 
-echo "-----> exporting PATH and LIBRARY_PATH"
+echo "-----> Exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:$HOME/vendor/mediainfo/usr/bin"' >> $PROFILE_PATH
