@@ -19,4 +19,4 @@ echo "-----> Exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:$HOME/vendor/mediainfo"' >> $PROFILE_PATH
-echo "-----> MEDIAINFO " MEDIAINFO_VERSION " COMPLETED"
+echo "-----> MEDIAINFO " $MEDIAINFO_VERSION " COMPLETED"
