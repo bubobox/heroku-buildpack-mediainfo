@@ -4,7 +4,7 @@ set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-MEDIAINFO_VERSION="0.7.64"
+MEDIAINFO_VERSION="0.7.91"
 ARCHIVE="mediainfo-${MEDIAINFO_VERSION}.tar.gz"
 
 # config
